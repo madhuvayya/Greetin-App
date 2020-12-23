@@ -4,11 +4,15 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.greetingapp.dto.Greeting;
+import com.bridgelabz.greetingapp.dto.User;
 import com.bridgelabz.greetingapp.service.GreetingService;
 
 @RestController
@@ -28,5 +32,10 @@ public class GreetingController {
 	@GetMapping("/message")
 	public String greeting() {
 		return greetingService.greet(); 
+	}
+	
+	@PostMapping("/greeting")
+	public String greetWithUserName(@RequestBody User user) {
+		return greetingService.getHelloMessage()+" " + user.getFirstName() + " "+ user.getLastName();
 	}
 }

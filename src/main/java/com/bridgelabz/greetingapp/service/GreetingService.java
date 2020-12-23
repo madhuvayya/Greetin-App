@@ -9,4 +9,8 @@ public class GreetingService {
 		return "Hello World";
 	}
 
+	public String getHelloMessage() {
+		return "Hello";
+	}
+
 }
